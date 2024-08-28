@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Airdrop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Magic Airdrop</h1>
+    <p>Click the button below to collect your Magic Airdrop.</p>
+    <button onclick="collectAirdrop()">Collect Magic Airdrop</button>
+    <p id="status"></p>
+
+    <script>
+        function collectAirdrop() {
+            document.getElementById('status').innerText = 'You have collected a Magic Airdrop!';
+        }
+    </script>
+</body>
+</html>
