@@ -27,17 +27,52 @@
         button:hover {
             background-color: #218838;
         }
+        .share {
+            background-color: #007bff;
+        }
+        .share:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <h1>Welcome to Magic Airdrop</h1>
     <p>Click the button below to collect your Magic Airdrop.</p>
-    <button onclick="collectAirdrop()">Collect Magic Airdrop</button>
-    <p id="status"></p>
+    <button onclick="collectAirdrop()">⭐ Collect Magic Airdrop</button>
+    <p id="status">You have collected <span id="counter">0</span> Magic Airdrop(s).</p>
+
+    <p><button class="share" onclick="shareWithFriends()">📤 Share with Friends</button></p>
 
     <script>
+        // Initialize the counter
+        let counter = 0;
+
+        // Check for a referral code in the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const referralCode = urlParams.get('referral');
+        if (referralCode) {
+            // If a referral code is found, credit the referrer with 100 Magic Airdrops
+            alert('You were referred by user: ' + referralCode);
+            counter += 100;
+            document.getElementById('counter').innerText = counter;
+        }
+
         function collectAirdrop() {
-            document.getElementById('status').innerText = 'You have collected a Magic Airdrop!';
+            // Increment the counter
+            counter += 1;
+            // Update the counter element with the new counter value
+            document.getElementById('counter').innerText = counter;
+        }
+
+        function shareWithFriends() {
+            // Generate a referral link
+            const currentUrl = window.location.origin + window.location.pathname;
+            const referralLink = `${currentUrl}?referral=USER12345`;  // Replace USER12345 with a unique ID
+
+            // Copy the referral link to the clipboard and alert the user
+            navigator.clipboard.writeText(referralLink).then(() => {
+                alert('Referral link copied to clipboard: ' + referralLink);
+            });
         }
     </script>
 </body>
